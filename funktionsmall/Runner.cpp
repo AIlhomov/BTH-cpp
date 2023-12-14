@@ -1,5 +1,10 @@
 #include "Runner.h"
 
+Runner::Runner(const string& name, bool gender, int age)
+	: Attendee(name, gender), age(age)
+{
+}
+
 string Runner::toString() const
 {
 	return Attendee::toString() + "Age: " + to_string(this->age);
