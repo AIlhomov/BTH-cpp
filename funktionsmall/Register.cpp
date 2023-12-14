@@ -16,12 +16,16 @@ Register::~Register()
 
 void Register::addRunner(const string& name, bool gender, int age)
 {
+	if (this->nrOfAttendes == this->capacity) {
+		this->capacity++;
+	}
 	this->attendee[nrOfAttendes++] = new Runner(name, gender, age);
 	
 }
 
 void Register::addElite(const string& name, bool gender, const string& clubb, int seasons)
 {
+	if (this->nrOfAttendes == this->capacity) this->capacity++;
 	this->attendee[nrOfAttendes++] = new Elite(name, gender, clubb, seasons);
 }
 
@@ -64,6 +68,8 @@ Register::Register(const Register& other)
 {
 	if (this != &other)
 	{
+		clearEverything();
+
 		this->capacity = other.capacity;
 		this->nrOfAttendes = other.nrOfAttendes;
 		attendee = new Attendee * [capacity];
@@ -81,5 +87,5 @@ void Register::clearEverything()
 	}
 	delete[] attendee;
 	nrOfAttendes = 0;
-	capacity = 0;
+	capacity = 5;
 }
