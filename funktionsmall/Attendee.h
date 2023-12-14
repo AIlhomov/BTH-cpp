@@ -13,7 +13,8 @@ private:
 public:
 	Attendee(string name, bool gender);
 
-	virtual bool contains(string str);
+	virtual bool contains(string str) const;
 	virtual string toString() const = 0;
+
 	string getName() const;
 };

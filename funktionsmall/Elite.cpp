@@ -2,7 +2,7 @@
 
 string Elite::toString() const
 {
-	return "Clubb: " + this->clubb + "\nSeasons: " + to_string(this->seasons);
+	return Attendee::toString() + "Clubb: " + this->clubb + "\nSeasons: " + to_string(this->seasons);
 }
 
 string Elite::getClubb() const
