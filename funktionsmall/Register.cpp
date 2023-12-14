@@ -53,6 +53,27 @@ Register& Register::operator=(const Register& other)
 	return *this;
 }
 
+void Register::viewParticipants() const
+{
+	for (int i = 0; i < nrOfAttendes; i++) {
+		cout << attendee[i]->toString() << endl;
+	}
+}
+
+Register::Register(const Register& other)
+{
+	if (this != &other)
+	{
+		this->capacity = other.capacity;
+		this->nrOfAttendes = other.nrOfAttendes;
+		attendee = new Attendee * [capacity];
+
+		for (int i = 0; i < nrOfAttendes; i++) {
+			attendee[i] = other.attendee[i]->clone();
+		}
+	}
+}
+
 void Register::clearEverything()
 {
 	for (int i = 0; i < nrOfAttendes; i++) {

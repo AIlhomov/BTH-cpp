@@ -10,10 +10,15 @@ int main() {
 
 	//tilldelningsoperator test
 
+	Register r1;
 
+	r1.addElite("Eliten", 1, "clubben 21", 2);
 
+	r1.viewParticipants();
 
+	Register r2(r1);
 
+	r2.viewParticipants();
 
 
 

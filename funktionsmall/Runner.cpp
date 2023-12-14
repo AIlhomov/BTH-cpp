@@ -1,5 +1,9 @@
 #include "Runner.h"
 
+Runner::~Runner()
+{
+}
+
 Runner::Runner(const string& name, bool gender, int age)
 	: Attendee(name, gender), age(age)
 {

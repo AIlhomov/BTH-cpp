@@ -10,6 +10,10 @@ Attendee::Attendee()
 {
 }
 
+Attendee::~Attendee()
+{
+}
+
 bool Attendee::contains(string str) const
 {
 	if (toString().find(str) != string::npos) return true;
