@@ -14,4 +14,6 @@ public:
 	string toString() const override;
 	
 	string getClubb() const;
+	//copy -- dynamic_cast
+	Elite* clone() const override;
 };

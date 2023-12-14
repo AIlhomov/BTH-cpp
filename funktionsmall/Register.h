@@ -6,7 +6,7 @@
 
 class Register {
 private:
-	Attendee* attendee;
+	Attendee** attendee;
 	int nrOfAttendes;
 	int capacity;
 public:
@@ -15,6 +15,13 @@ public:
 	void addRunner(const string& name, bool gender, int age);
 	void addElite(const string& name, bool gender, const string& clubb, int seasons);
 	int getNrOfAttendes() const;
+	bool searchAttende(const string& strName);
+	Register& operator=(const Register& other); //self check
+
+	//kopieringskonstruktor -- dynamic_cast
+	//tilldelning
+
+	void clearEverything();
 };
 
 

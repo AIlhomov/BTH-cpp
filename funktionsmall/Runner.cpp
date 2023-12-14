@@ -14,3 +14,8 @@ int Runner::getAge() const
 {
 	return this->age;
 }
+
+Runner* Runner::clone() const
+{
+	return new Runner(*this);
+}

@@ -26,12 +26,12 @@ string Attendee::getName() const
 	return this->name;
 }
 
-void Attendee::setName(const string& name)
-{
-	this->name = name;
-}
-
-void Attendee::setGender(bool gender)
-{
-	this->gender = gender;
-}
+//void Attendee::setName(const string& name)
+//{
+//	this->name = name;
+//}
+//
+//void Attendee::setGender(bool gender)
+//{
+//	this->gender = gender;
+//}

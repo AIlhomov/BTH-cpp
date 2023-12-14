@@ -3,24 +3,62 @@
 Register::Register()
 	: attendee(nullptr), nrOfAttendes(0), capacity(5)
 {
+	attendee = new Attendee*[capacity] {nullptr};
 }
 
 Register::~Register()
 {
-	delete attendee;
+	for (int i = 0; i < nrOfAttendes; i++) {
+		delete attendee[i];
+	}
+	delete[] attendee;
 }
 
 void Register::addRunner(const string& name, bool gender, int age)
 {
-	attendee = new Runner(name, gender, age);
+	this->attendee[nrOfAttendes++] = new Runner(name, gender, age);
+	
 }
 
 void Register::addElite(const string& name, bool gender, const string& clubb, int seasons)
 {
-	attendee = new Elite(name, gender, clubb, seasons);
+	this->attendee[nrOfAttendes++] = new Elite(name, gender, clubb, seasons);
 }
 
 int Register::getNrOfAttendes() const
 {
 	return this->nrOfAttendes;
+}
+
+bool Register::searchAttende(const string& strName)
+{
+	for (int i = 0; i < nrOfAttendes; i++) {
+		if (attendee[i]->getName() == strName) return true;
+	}
+	return false;
+}
+
+Register& Register::operator=(const Register& other)
+{
+	if (this != &other) {
+		clearEverything(); //clears everything to zero.
+
+		nrOfAttendes = other.nrOfAttendes;
+		capacity = other.capacity;
+		attendee = new Attendee * [capacity];
+		for (int i = 0; i < nrOfAttendes; i++) {
+			attendee[i] = other.attendee[i]->clone();
+		}
+	}
+	return *this;
+}
+
+void Register::clearEverything()
+{
+	for (int i = 0; i < nrOfAttendes; i++) {
+		delete attendee[i];
+	}
+	delete[] attendee;
+	nrOfAttendes = 0;
+	capacity = 0;
 }

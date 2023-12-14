@@ -14,3 +14,8 @@ string Elite::getClubb() const
 {
 	return this->clubb;
 }
+
+Elite* Elite::clone() const
+{
+	return new Elite(*this);
+}

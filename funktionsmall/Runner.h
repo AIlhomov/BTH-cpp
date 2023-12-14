@@ -9,4 +9,5 @@ public:
 	Runner(const string& name, bool gender, int age);
 	string toString() const override;
 	int getAge() const;
+	Runner* clone() const override;
 };
