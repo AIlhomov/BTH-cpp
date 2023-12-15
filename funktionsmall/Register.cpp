@@ -64,6 +64,85 @@ void Register::viewParticipants() const
 	}
 }
 
+void Register::viewRunners() const
+{
+	cout << "Runners: " << endl;
+
+	for (int i = 0; i < nrOfAttendes; i++)
+	{
+		Runner* r = dynamic_cast<Runner*>(attendee[i]);
+		if (r) {
+			cout << r->toString() << endl;
+		}
+	}
+}
+
+void Register::viewElites() const
+{
+	cout << "Elites: " << endl;
+	for (int i = 0; i < nrOfAttendes; i++)
+	{
+		Elite* e = dynamic_cast<Elite*>(attendee[i]);
+		if (e) {
+			cout << e->toString() << endl;
+		}
+	}
+}
+
+bool Register::removeElite(const string& name)
+{
+	if (nrOfAttendes == 0) return false;
+
+	for (int i = 0; i < nrOfAttendes; i++)
+	{
+		Elite* e = dynamic_cast<Elite*>(attendee[i]);
+		if (e) {
+			Elite* temp = new Elite(name, 0, "?", 0);
+
+			if (temp->getName() == attendee[i]->getName()) {
+
+				delete attendee[i];
+				attendee[i] = this->attendee[--nrOfAttendes];
+
+				attendee[nrOfAttendes] = nullptr;
+				delete temp;
+				return true;
+			}
+
+			
+		}
+	}
+	return false;
+}
+
+bool Register::removeRunner(const string& name)
+{
+	if (nrOfAttendes == 0) return false;
+
+	for (int i = 0; i < nrOfAttendes; i++)
+	{
+		Runner* r = dynamic_cast<Runner*>(attendee[i]);
+
+		if (r) {
+			Runner* temp = new Runner(name, 0, 0);
+
+			if (temp->getName() == attendee[i]->getName()) {
+
+				delete attendee[i];
+
+				attendee[i] = attendee[nrOfAttendes--];
+
+				attendee[nrOfAttendes] = nullptr;
+
+				delete temp;
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
 Register::Register(const Register& other)
 {
 	if (this != &other)
@@ -75,7 +154,7 @@ Register::Register(const Register& other)
 		attendee = new Attendee * [capacity];
 
 		for (int i = 0; i < nrOfAttendes; i++) {
-			attendee[i] = other.attendee[i]->clone();
+			this->attendee[i] = other.attendee[i]->clone();
 		}
 	}
 }

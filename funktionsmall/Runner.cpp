@@ -11,7 +11,7 @@ Runner::Runner(const string& name, bool gender, int age)
 
 string Runner::toString() const
 {
-	return Attendee::toString() + "Age: " + to_string(this->age);
+	return Attendee::toString() + "\nAge: " + to_string(this->age);
 }
 
 int Runner::getAge() const
