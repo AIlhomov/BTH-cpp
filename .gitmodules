@@ -1,0 +1,3 @@
+[submodule "BTH-cpp"]
+	path = BTH-cpp
+	url = https://github.com/AIlhomov/BTH-cpp.git
